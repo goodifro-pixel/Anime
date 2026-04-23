@@ -14,7 +14,7 @@ import {
   statusLabel,
   typeLabel,
 } from "@/lib/utils";
-import Player from "@/components/Player";
+import PlayerBalancer from "@/components/PlayerBalancer";
 
 export const revalidate = 1800;
 
@@ -166,16 +166,11 @@ export default async function AnimeDetailPage({
 
       <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
         <h2 className="mb-4 text-2xl font-bold text-white">Перегляд</h2>
-        <Player
+        <PlayerBalancer
+          malId={anime.mal_id}
+          title={anime.title_english || anime.title}
           youtubeId={anime.trailer?.youtube_id ?? null}
-          title={anime.title}
         />
-        {!anime.trailer?.youtube_id ? (
-          <p className="mt-3 text-xs text-gray-500">
-            Примітка: у цьому клоні фронтенду плеєр показує трейлери з YouTube
-            або плейсхолдер. Для власного стрімінгу підключіть CDN з HLS/DASH.
-          </p>
-        ) : null}
       </section>
 
       {episodes.length ? (
