@@ -142,6 +142,32 @@ export default async function AnimeDetailPage({
               {anime.synopsis || "Опис недоступний."}
             </p>
 
+            {/* Watch Button */}
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link
+                href={`/watch/${anime.mal_id}`}
+                className="inline-flex items-center gap-2 rounded-xl bg-brand px-6 py-3 font-semibold text-white transition hover:bg-brand/90"
+              >
+                <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+                Дивитись онлайн
+              </Link>
+              {anime.trailer?.youtube_id && (
+                <a
+                  href={`https://www.youtube.com/watch?v=${anime.trailer.youtube_id}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-xl border border-bg-border bg-bg-soft px-6 py-3 font-medium text-gray-200 transition hover:bg-bg-card hover:text-white"
+                >
+                  <svg className="h-5 w-5 text-red-500" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                  </svg>
+                  Трейлер
+                </a>
+              )}
+            </div>
+
             <dl className="mt-6 grid grid-cols-2 gap-3 text-sm sm:grid-cols-3">
               <Info label="Епізоди" value={anime.episodes ?? "—"} />
               <Info label="Тривалість" value={anime.duration || "—"} />
