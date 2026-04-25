@@ -99,6 +99,7 @@ export default async function WatchPage({ params, searchParams }: WatchPageProps
               <AnimePlayer
                 malId={anime.mal_id}
                 title={anime.title}
+                poster={anime.images?.webp?.large_image_url || anime.images?.jpg?.large_image_url}
                 episode={currentEpisode}
                 totalEpisodes={totalEpisodes}
               />
