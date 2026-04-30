@@ -6,6 +6,7 @@ import { ArrowLeft, Star, Calendar, Clock, Film } from "lucide-react";
 import AnimePlayer from "@/components/AnimePlayer";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import UASourcesPanel from "@/components/UASourcesPanel";
 
 interface WatchPageProps {
   params: Promise<{ id: string }>;
@@ -94,6 +95,11 @@ export default async function WatchPage({ params, searchParams }: WatchPageProps
                 <p className="text-sm text-gray-500">{anime.title_japanese}</p>
               )}
             </div>
+
+            <UASourcesPanel
+              title={anime.title}
+              titleEnglish={anime.title_english}
+            />
 
             <Suspense fallback={<PlayerSkeleton />}>
               <AnimePlayer

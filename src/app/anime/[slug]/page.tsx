@@ -15,6 +15,7 @@ import {
   typeLabel,
 } from "@/lib/utils";
 import PlayerBalancer from "@/components/PlayerBalancer";
+import UASourcesPanel from "@/components/UASourcesPanel";
 
 export const revalidate = 1800;
 
@@ -166,6 +167,13 @@ export default async function AnimeDetailPage({
                   Трейлер
                 </a>
               )}
+            </div>
+
+            <div className="mt-6">
+              <UASourcesPanel
+                title={anime.title}
+                titleEnglish={anime.title_english}
+              />
             </div>
 
             <dl className="mt-6 grid grid-cols-2 gap-3 text-sm sm:grid-cols-3">
