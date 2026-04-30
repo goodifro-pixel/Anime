@@ -22,7 +22,7 @@ export default async function HomePage() {
 
   return (
     <>
-      {hero.length ? <HeroCarousel items={hero} /> : null}
+      {hero && hero.length ? <HeroCarousel items={hero} /> : null}
 
       <Section
         title="Новинки аніме"
@@ -31,7 +31,7 @@ export default async function HomePage() {
         hrefLabel="Переглянути всі активні"
       >
         <HScroll>
-          {ongoing.map((a) => (
+          {(ongoing ?? []).map((a) => (
             <AnimeCard key={a.mal_id} anime={a} badge="NEW" />
           ))}
         </HScroll>
@@ -44,7 +44,7 @@ export default async function HomePage() {
         hrefLabel="Всі сезонні аніме"
       >
         <HScroll>
-          {season.map((a) => (
+          {(season ?? []).map((a) => (
             <AnimeCard key={a.mal_id} anime={a} />
           ))}
         </HScroll>
@@ -57,7 +57,7 @@ export default async function HomePage() {
         hrefLabel="Топ-100"
       >
         <HScroll>
-          {top.map((a) => (
+          {(top ?? []).map((a) => (
             <AnimeCard key={a.mal_id} anime={a} />
           ))}
         </HScroll>
@@ -70,7 +70,7 @@ export default async function HomePage() {
         hrefLabel="Всі анонси"
       >
         <HScroll>
-          {upcoming.map((a) => (
+          {(upcoming ?? []).map((a) => (
             <AnimeCard key={a.mal_id} anime={a} badge="АНОНС" />
           ))}
         </HScroll>
